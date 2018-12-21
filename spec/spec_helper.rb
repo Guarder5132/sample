@@ -39,4 +39,7 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = "random"
+
+  #要正确测试运行所需要的代码
+  config.include Capybara::DSL
 end

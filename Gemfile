@@ -7,6 +7,7 @@ ruby '2.0.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 
+
 # Use sqlite3 as the database for Active Record
 #强制Bundler安装sqlite3 gem 的 1.3.7版本。
 #注意：：：  我们仅把sqlite放到了开发环境中， 可以避免和Heroku的数据库冲突 
@@ -17,7 +18,7 @@ end
 
 group :test do
   gem 'selenium-webdriver', '2.0.0'
-  #允许我们使用类似英语中的句法编写模拟与应用程序交互的代码
+  #允许我们使用类似英语中的句法编写模拟与应用程序交互
   gem 'capybara', '2.1.0'
 end
 
