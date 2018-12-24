@@ -5,6 +5,7 @@ source 'https://gems.ruby-china.com'
 ruby '2.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem 'bootstrap-sass','2.3.2.0'
 gem 'rails', '4.0.0'
 
 
@@ -17,13 +18,14 @@ group :development, :test do
 end
 
 group :test do
+  gem 'rubyzip', '0.9.9'
   gem 'selenium-webdriver', '2.0.0'
   #允许我们使用类似英语中的句法编写模拟与应用程序交互
   gem 'capybara', '2.1.0'
 end
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '4.0.0'
+gem 'sass-rails'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '2.1.1'
