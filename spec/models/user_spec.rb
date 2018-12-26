@@ -18,7 +18,8 @@ describe User do
   it {should respond_to(:password_digest)}
   it {should respond_to(:password)}
   it {should respond_to(:password_confirmation)}
-  it { should respond_to(:authenticate) }
+  it {should respond_to(:remember_token)}
+  it {should respond_to(:authenticate) }
 
   #验证name属性的失败测试
   it { should be_valid }
@@ -121,4 +122,9 @@ describe User do
     end
   end
 
+  #测试合法的(非空)记忆权标值
+  describe "remember token" do
+    before {@user.save}
+    its(:remember_token) {should_not be_blank}
+  end
 end
