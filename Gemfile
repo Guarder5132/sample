@@ -23,6 +23,7 @@ group :test do
   gem 'selenium-webdriver', '2.0.0'
   #允许我们使用类似英语中的句法编写模拟与应用程序交互
   gem 'capybara', '2.1.0'
+  gem 'factory_girl_rails', '4.2.1'
 end
 
 gem 'rake' ,'~>10.2.2'
