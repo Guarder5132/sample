@@ -8,6 +8,10 @@ ruby '2.0.0'
 gem 'bootstrap-sass','2.3.2.0'
 gem 'rails', '4.0.0'
 gem 'bcrypt-ruby', '3.0.1'
+#更好的显示用户信息列表
+gem 'faker', '1.1.2'
+#用户列表查看分页
+gem 'bootstrap-will_paginate', '0.0.9'
 
 
 # Use sqlite3 as the database for Active Record
