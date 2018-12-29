@@ -16,7 +16,10 @@ class UsersController < ApplicationController
   end
   
   def show
+    #定义@user变量，调用find方法提取数据库里用户信息
+    #params是获取ID信息，find方法是获取这个ID的所有信息
     @user = User.find(params[:id])
+    @microposts = @user.microposts.paginate(page: params[:page])
   end
 
   def create
@@ -63,12 +66,12 @@ class UsersController < ApplicationController
 
     #Before filters
 
-    def signed_in_user
-      unless signed_in?
-        store_location
-        redirect_to signin_url, notice: "Please sign in"
-      end
-    end
+    # def signed_in_user
+    #   unless signed_in?
+    #     store_location
+    #     redirect_to signin_url, notice: "Please sign in"
+    #   end
+    # end
 
     def correct_user
       @user = User.find(params[:id])

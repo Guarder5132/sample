@@ -32,6 +32,13 @@ module SessionsHelper
     def current_user? (user)
         user == current_user
     end
+    
+    def signed_in_user
+        unless signed_in?
+            store_location
+            redirect_to signin_url, notice: "Please sign in."
+        end
+    end
 
     #Sessions 帮助方法模块中定义的gign_out 方法
     def sign_out

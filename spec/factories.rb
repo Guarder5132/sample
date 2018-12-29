@@ -10,4 +10,10 @@ FactoryGirl.define do
             admin true
         end
     end
+
+    #微博的预构件中包含一个用户对象就可以实现关联
+    factory :micropost do 
+        content "Lorem ipsum"
+        user
+    end
 end

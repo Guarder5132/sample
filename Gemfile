@@ -20,6 +20,9 @@ gem 'bootstrap-will_paginate', '0.0.9'
 group :development, :test do
   gem 'sqlite3', '1.3.7'
   gem 'rspec-rails', '2.13.1'
+  gem "pry-rails"  
+  gem "pry-byebug"
+  gem "binding_of_caller"
 end
 
 group :test do

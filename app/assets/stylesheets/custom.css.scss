@@ -91,16 +91,17 @@ footer ul {
     }
 }
 
-/* miscellaneous */
+/*调试信息的样式*/
 .debug_dump {
     clear: both;
     float: left;
     width: 100%;
     margin-top: 45px;
+    color: cadetblue;
     @include box_sizing;
 }
 
-/* sidebar */
+/* 用户资料页面的样式，包括侧边栏 */
 aside {
     section {
         padding: 10px 0;
@@ -170,7 +171,33 @@ input {
     }
 }
 
+/* microposts */
 
+.microposts {
+    list-style: none;
+    margin: 10px 0 0 0;
+
+    li {
+        padding: 10px 0;
+        border-top: 1px solid #e8e8e8;
+    }
+}
+.content {
+    display: block;
+}
+.timestamp {
+    color: $grayLight;
+}
+.gravatar {
+    float: left;
+    margin-right: 10px;
+}
+aside {
+    textarea {
+        height: 100px;
+        margin-bottom: 5px;
+    }
+}
 
 
 

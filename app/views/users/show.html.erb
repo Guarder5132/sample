@@ -4,12 +4,22 @@
     <aside class= "span4">
         <section>
             <h1>
+                <!-定义了一个gravatar_for方法，返回指定用户的gravatar头像->
                 <%= gravatar_for @user%>
                 <%= @user.name %>
             </h1>
         </section>
     </aside>
+    <div class = "span8">
+        <% if @user.microposts.any? %>
+            <h3>microposts (<%= @user.microposts.count %>)</h3>
+            <ol class= "microposts">
+                <%= render @microposts%>
+            </ol>
+            <%= will_paginate @microposts %>
+        <% end %>
+    </div>
 </div>
 
 
-<%= @user.name %>, <%= @user.email %>
+<%= @user.name %>  ,  <%= @user.email %>

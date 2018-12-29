@@ -61,10 +61,20 @@ describe "User Pages" do
 
   describe "profile page" do
     let(:user) { FactoryGirl.create(:user) }
+    let!(:m1) {FactoryGirl.create(:micropost, user: user, content: "Foo")}
+    let!(:m2) {FactoryGirl.create(:micropost, user: user, content: "Bar")}
+
     before { visit user_path(user) }
 
     it { should have_content(user.name) }
     it { should have_title(user.name) }
+
+    #检测用户资料页面是否显示了微博的测试
+    describe "microposts" do
+      it { should have_content(m1.content)}
+      it { should have_content(m2.content)}
+      it { should have_content(user.microposts.count)}
+    end
   end
 
   #Users控制器的测试代码，包含“注册”页面的测试用例
@@ -156,6 +166,16 @@ describe "User Pages" do
       #然后检测用户的名字和Email地址是否更新成了新的值
       specify {expect(user.reload.name).to  eq new_name}
       specify {expect(user.reload.email).to eq new_email}
+    end
+
+    #测试admin属性是否无法修改
+    describe "forbidden attributes" do
+      let(:params) do
+        { user: { admin: true, password: user.password,
+                  password_confirmation: user.password } }
+      end
+      before { patch user_path(user), params }
+      specify { expect(user.reload).not_to be_admin }
     end
   end
 end
