@@ -1,6 +1,9 @@
 @import "bootstrap";
 $lightGray: #999;
+$grayLight: #999;
+$grayLighter: #999;
 $grayMediumLight: #eaeaea;
+$blue: blue;
 
 @mixin  box_sizing {
     -moz-box-sizing: border-box;
@@ -8,117 +11,156 @@ $grayMediumLight: #eaeaea;
     box-sizing: border-box
 }
 
+/*===========全站使用的CSS===============*/
 html {
-    overflow-y: scroll;
+    /*如果内容溢出了元素内容区域,是否对上下边缘进行裁剪  scroll：裁剪内容，通过滚动装置*/
+    overflow-y:scroll;
 }
+
 body {
-    padding-top: 60px;
+    /*设置上内边距*/
+    padding-top: 70px;
 }
+
+/*定义文档中的节*/
 section {
+    /*规定当内容溢出元素框时发生的事情*/
     overflow: auto;
 }
+/*标签定义多行的文本输入控件。*/
 textarea {
+    /*resize 属性规定是否可由用户调整元素的尺寸  vertical用户可调整元素的高度。*/
     resize: vertical;
 }
 .center {
+    /*规定文本的水平对齐方式*/
     text-align: center;
     h1 {
+        /*设置元素的下边距*/
         margin-bottom: 10px;
     }
 }
-/* typography */
+
+/* =======================文字排版======================= */
 h1, h2, h3, h4, h5, h6 {
-    line-height: 1;
+    /*设置行高*/
+    line-height: 2;
 }
 h1 {
+    /*设置字体的尺寸。*/
     font-size: 3em;
-    letter-spacing: -2px;
+    /*设置字符间距*/
+    letter-spacing: 2px;
+    /*设置元素的下外边距*/
     margin-bottom: 30px;
+    /*规定文本的水平对齐方式*/
     text-align: center;
 }
 h2 {
     font-size: 1.2em;
-    letter-spacing: -1px;
+    letter-spacing: 0.5px;
     margin-bottom: 30px;
     text-align: center;
+    /*规定字体的粗细  默认*/
     font-weight: normal;
-    color:$grayLight;
+    color:dimgray;
 }
 p {
     font-size: 1.1em;
     line-height: 1.7em;
 }
 
-/* header */
+/* ======================logo样式====================== */
 #logo {
+    /*规定框是否应该浮动*/
     float: left;
+    /*设置元素的右外边距*/
     margin-right: 10px;
-    font-size: 1.7em;
+
+    font-size: 1.8em;
     color:white;
-    text-transform: uppercase;
-    letter-spacing: -1px;
-    padding-top: 9px;
+    /*控制文本的大小写  文本中的每个单词以大写字母开头*/  
+    text-transform: capitalize;
+    letter-spacing: 0.5px;
+    padding-top: 12px;
+    /*规定字体的粗细  粗*/
     font-weight: bold;
-    line-height: 1;
     &:hover{
         color: white;
+        /*规定添加到文本的装饰效果*/
         text-decoration: none;
     }
 }
 
-/* footer */
+/* ==================底部样式===================== */
 footer {
+    /*设置元素的上外边距*/
     margin-top: 45px;
+    /*设置上内边距*/
     padding-top: 5px;
+    /*在一个声明中设置所有的上边框属性*/
     border-top: 1px solid $grayMediumLight;
     color:$grayLight;
     a {
         color: #555;
         &:hover {
-            color: #222;
+            color: white;
         }
     }
+    
 }
 footer small {
+    /*规定框是否应该浮动*/
     float: left;
 }
 footer ul {
     float: right;
+    /*在一个声明中设置所有的列表属性*/
     list-style: none;
     li {
-        float: left;
+        float: right;
+        /*设置元素的左外边距*/
         margin-left: 10px;
     }
 }
 
-/*调试信息的样式*/
+/*============美化调试信息===============*/
 .debug_dump {
+    /*规定元素的哪一侧不允许其他浮动元素 在左右两侧均不允许浮动元素*/
     clear: both;
     float: left;
+    /*设置元素的宽度*/
     width: 100%;
     margin-top: 45px;
-    color: cadetblue;
+    color: #505050;
     @include box_sizing;
 }
 
-/* 用户资料页面的样式，包括侧边栏 */
+/* =================用户资料页面的样式，包括侧边栏=================== */
 aside {
     section {
+        /*在一个声明中设置所有内边距属性*/
         padding: 10px 0;
         border-top: 1px solid $grayLighter;
         &:first-child{
+            /*在一个声明中设置所有的边框属性*/
             border: 0;
             padding-top: 0;
         }
         span {
+            /*规定元素应该生成的框的类型*/
             display: block;
-            margin-bottom: 3px;
+            /*元素下边距*/
+            margin-bottom: 10px;
+            /*行高*/
             line-height: 1;
         }
         h1 {
             font-size: 1.4em;
             text-align: left;
-            letter-spacing: -1px;
+            /*字符之间的间距*/
+            letter-spacing: 0.5px;
+            /*元素的下外边距*/
             margin-bottom: 3px;
             margin-top: 0px;
         }
@@ -130,7 +172,7 @@ aside {
     margin-right: 10px;
 }
 
-/* forms */
+/* ===============注册表单的样式================ */
 
 input, textarea, select, .uneditable-input{
     border: 1px solid #bbb;
@@ -141,37 +183,42 @@ input, textarea, select, .uneditable-input{
 }
 
 input {
+    /*设置元素的高度*/
     height: auto !important;
 }
 
+/*============错误提示信息样式==================*/
 #error_explanation{
     color: #f00;
     ul{
         list-style: none;
+        /*在一个声明中设置所有外边距属性*/
         margin: 0 0 18px 0;
     }
 }
 
 .field_with_errors{
-    @extend .control-group;
-    @extend .error;
+    @extend .control-group !optional;
+    @extend .error !optional;
 }
 
-/* Users index */
+/* ======================用户列表样式======================= */
 .users {
     list-style: none;
     margin: 0;
     li {
+        /*规定当内容溢出元素框时发生的事情*/
         overflow: auto;
         padding: 10px 0;
         border-top: 1px solid $grayLighter;
         &:last-child {
+            /*在一个声明中设置所有的下边框属性*/
             border-bottom: 1px solid $grayLighter;
         }
     }
 }
 
-/* microposts */
+/* =================微博列表样式================= */
 
 .microposts {
     list-style: none;
@@ -199,7 +246,7 @@ aside {
     }
 }
 
-/* sidebar */
+/* =================首页侧边栏样式====================== */
 
 .stats{
     overflow:auto;
@@ -209,6 +256,7 @@ aside {
         border-left: 1px solid $grayLighter;
         color: gray;
         &:first-child{
+            /*设置元素的左内边距*/
             padding-left: 0;
             border: 0;
         }

@@ -1,0 +1,86 @@
+version: "2"
+
+services:
+  mysql:
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    volumes:
+      - "mysql_data:/var/lib/mysql"
+      - ".:/app"
+    networks:
+      - backend
+  redis:
+    image: redis:3.2-alpine
+    volumes:
+      - "redis_data:/data"
+      - ".:/app"  
+    networks:
+      - backend
+  main:
+    image: agideo/ruby:2.3-d
+    hostname: baseproject-dev
+    volumes:
+      - ".:/app"
+      - "ruby_bundle:/usr/local/bundle"
+      - "rails_log:/app/log"
+      - "rails_tmp:/app/tmp"
+      - "/home/zheng/.ssh/id_rsa:/root/.ssh/id_rsa"
+      - "./config/nginx-docker-development.conf:/etc/nginx/conf.d/default.conf"
+    environment:
+      - VIRTUAL_HOST=sample_app.192.168.193.132.xip.io
+      - VIRTUAL_PORT=80
+      - DOCKER_ENV=development
+    depends_on:
+      - mysql
+      - redis
+    networks:
+      - backend
+      - default
+  # frontend_admin:
+  #   image: agideo/ruby:2.3-d
+  #   hostname: fd_admin_dev
+  #   environment:
+  #     - DEPLOY_PORT=999
+  #     - DEPLOY_DOMAIN=999.com
+  #   volumes:
+  #     - ".:/app"
+  #     - "node_modules_frontend_admin:/app/frontend_admin/node_modules"
+  #     - "/home/zheng/.ssh/id_rsa:/root/.ssh/id_rsa"
+  #     - "./config/nginx-docker-development.conf:/etc/nginx/conf.d/default.conf"
+  #   networks:
+  #     - backend
+  #     - default
+  # frontend_wechat:
+  #   image: agideo/ruby:2.3-d
+  #   hostname: fd_wechat_dev
+  #   volumes:
+  #     - ".:/app"
+  #     - "node_modules_frontend_wechat:/app/frontend_wechat/node_modules"
+  #     - "/home/zheng/.ssh/id_rsa:/root/.ssh/id_rsa"
+  #   networks:
+  #     - backend
+  # frontend_web:
+    # image: jimjin/docker-baseimage-ruby:2.3-b-mysql-rsync-registry-taobao-node-6-11
+    # hostname: fd_web_dev
+    # volumes:
+    #   - ".:/app"
+    #   - "node_modules_frontend_web:/app/frontend_web/node_modules"
+    #   - "/home/zheng/.ssh/id_rsa:/root/.ssh/id_rsa"
+    # networks:
+    #   - backend
+networks:
+  backend:
+  default:
+    external:
+      name: base_default
+
+volumes:
+  mysql_data:
+  redis_data:
+  ruby_bundle:
+  rails_tmp:
+  rails_log:
+  # node_modules_frontend_admin:
+  # node_modules_frontend_wechat:
+  # node_modules_frontend_web:

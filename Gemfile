@@ -1,77 +1,49 @@
-#source 'https://rubygems.org'
 source 'https://gems.ruby-china.com'
+#ruby的版本
+ruby '2.3.7'
 
-#该应用期望使用的Ruby版本
-ruby '2.0.0'
+gem 'rails', '5.1.4'
+gem 'bootstrap-sass', '3.4.1'
+gem 'rake','12.3.2'
+#引进最先进的哈西函数bcrypt对密码进行不可逆的保密
+gem 'bcrypt-ruby','3.1.5'
+gem 'faker','1.9.3'
+#bootstrap-will_paginate作用是设置will_paginate使用Bootstrap中的分页样式
+gem 'will_paginate','3.1.6'
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'bootstrap-sass','2.3.2.0'
-gem 'rails', '4.0.0'
-gem 'bcrypt-ruby', '3.0.1'
-#更好的显示用户信息列表
-gem 'faker', '1.1.2'
-#用户列表查看分页
-gem 'bootstrap-will_paginate', '0.0.9'
+gem 'bootstrap-will_paginate','1.0.0'
 
-
-# Use sqlite3 as the database for Active Record
-#强制Bundler安装sqlite3 gem 的 1.3.7版本。
-#注意：：：  我们仅把sqlite放到了开发环境中， 可以避免和Heroku的数据库冲突 
+#开发环境
 group :development, :test do
-  gem 'sqlite3', '1.3.7'
-  gem 'rspec-rails', '2.13.1'
-  gem "pry-rails"  
-  gem "pry-byebug"
-  gem "binding_of_caller"
+gem 'rubyzip','1.2.2'
+#使用sqlite3作为Active Record的数据库
+gem 'sqlite3', '1.3.13'
+#使用RSpec相关的生成器
+gem 'rspec-rails','3.8.2'
 end
+
 
 group :test do
-  gem 'rubyzip', '0.9.9'
-  gem 'selenium-webdriver', '2.0.0'
-  #允许我们使用类似英语中的句法编写模拟与应用程序交互
-  gem 'capybara', '2.1.0'
-  gem 'factory_girl_rails', '4.2.1'
+gem 'selenium-webdriver','3.141.0'
+#允许我们使用类是英语中的句法编写模拟与应用程序交互的代码
+gem 'capybara','3.14.0'
+gem 'factory_girl_rails','4.9.0'
 end
 
-gem 'rake' ,'~>10.2.2'
-# Use SCSS for stylesheets
-gem 'sass-rails'
-
-# Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '2.1.1'
-
-# Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '4.0.0'
-
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
-
-# Use jquery as the JavaScript library
-gem 'jquery-rails', '2.2.1'
-
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks', '1.1.1'
-
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '1.0.2'
+#将SCSS用于样式表
+gem 'sass-rails','5.0.7'
+#使用Uglifier作为JavaScript资源的压缩器
+gem 'uglifier','4.1.20'
+#将CoffeeScript用于.js.coffee资产和视图
+gem 'coffee-rails','4.2.2'
+#Use jquery as the JavaScript library
+gem 'jquery-rails','4.3.3'
+#Turbolinks可以更快地在您的Web应用程序中建立以下链接。
+gem 'turbolinks','5.2.0'
+#轻松构建JSON API。
+gem 'jbuilder','2.8.0'
+gem 'listen','3.1.5'
 
 group :doc do
-  # bundle exec rake doc:rails generates the API under doc/api.
-  gem 'sdoc', '0.3.20',require: false
+gem 'sdoc', '0.3.20', require: false
 end
-
-group :production do
-  gem 'pg', '0.15.1'
-end
-
-# Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano', group: :development
-
-# Use debugger
-# gem 'debugger', group: [:development, :test]
